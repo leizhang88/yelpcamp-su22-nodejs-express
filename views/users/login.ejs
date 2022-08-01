@@ -1,18 +1,11 @@
 <% layout("layouts/boilerplate") %>
     <div class="row">
         <div class="col-6 offset-3">
-            <h1>Register</h1>
-            <form action="/register" method="POST" class="validated-form" novalidate>
+            <h1>Login</h1>
+            <form action="/login" method="POST" class="validated-form" novalidate>
                 <div class="mb-3">
                     <label class="form-label" for="username">Username</label>
                     <input class="form-control" type="text" id="username" name="username" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="email">Email</label>
-                    <input class="form-control" type="email" id="email" name="email" required>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
@@ -24,11 +17,14 @@
                         Looks good!
                     </div>
                 </div>
-                <div class="d-grid">
-                    <button class="btn btn-primary mt-3">Register</button>
-                    <a href="/login">
-                        <label class="form-label">Login?</label>
-                    </a>
+                <div class="mt-3 d-grid">
+                    <button class="btn btn-primary mt-3">Login</button>
+                    <div class="">
+                        <a href="/register">
+                            <label class="form-label">Register</label>
+                        </a>
+                        <a href="#" class="float-end"><label class="form-label">Forgot password?</label></a>
+                    </div>
                 </div>
             </form>
         </div>

@@ -16,17 +16,22 @@
                     <li class="list-group-item text-muted">
                         <%= campground.location %>
                     </li>
+                    <li class="list-group-item">
+                        Submitted by <%= campground.author.username %>
+                    </li>
                     <li class="list-group-item">$<%= campground.price %>/day</li>
                 </ul>
                 <div class="card-footer">
-                    <form class="d-inline" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
-                        <button class="btn btn-sm btn-outline-danger mx-1 float-end">Delete</button>
-                    </form>
-                    <a class="card-link btn btn-sm btn-outline-info mx-1 float-end"
-                        href="/campgrounds/<%= campground._id %>/edit">
-                        Edit
-                    </a>
-                    <a href="/campgrounds" class="text-muted fs-6 text-start">Go to campgrounds</a>
+                    <% if(currentUser && campground.author._id.equals(currentUser._id)) {%>
+                        <form class="d-inline" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-sm btn-outline-danger mx-1 float-end">Delete</button>
+                        </form>
+                        <a class="card-link btn btn-sm btn-outline-info mx-1 float-end"
+                            href="/campgrounds/<%= campground._id %>/edit">
+                            Edit
+                        </a>
+                        <% } %>
+                            <a href="/campgrounds" class="text-muted fs-6 text-start">Go to campgrounds</a>
                 </div>
             </div>
             <div class="mb-5">

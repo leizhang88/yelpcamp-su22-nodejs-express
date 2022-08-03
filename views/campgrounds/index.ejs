@@ -25,7 +25,7 @@
                                             <%=campground.location%>
                                         </small></span>
                                 </div>
-                                <p class="card-text">
+                                <p class="card-text" style="width: 100%">
                                     <%=campground.description%>
                                 </p>
                             </div>
@@ -38,6 +38,6 @@
 
     <script>
         const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
-        const campgrounds = { features: <%-JSON.stringify(campgrounds) %>};
+        const campgrounds = { features: <% -JSON.stringify(campgrounds) %>};
     </script>
     <script src="/javascripts/mapboxCluster.js"></script>

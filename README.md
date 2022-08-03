@@ -24,4 +24,4 @@ Visit [here](https://yelpcamp-su22-nodejs-express.herokuapp.com/)
 ![map-display](./img/map-display.png)
 - Authorization based on data ownership
 ![owner](./img/owner.png)
-![visitor](./img/visitor/png)
+![visitor](./img/visitor.png)

@@ -13,14 +13,18 @@ const ExpressError = require("./utils/ExpressError");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user");
-
 const mongoSanitize = require('express-mongo-sanitize');
 
 const userRoutes = require("./routes/users");
 const campgroundRoutes = require("./routes/campgrounds");
 const reviewRoutes = require("./routes/reviews");
 
-mongoose.connect("mongodb://127.0.0.1:27017/yelp-camp")
+// deployment
+const dbUrl = process.env.DB_URL;
+const MongoStore = require('connect-mongo');
+
+// "mongodb://127.0.0.1:27017/yelp-camp"
+mongoose.connect(dbUrl)
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
@@ -44,7 +48,11 @@ const sessionConfig = {
     saveUninitialized: true,
     cookie: {
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7
-    }
+    },
+    store: MongoStore.create({
+        mongoUrl: dbUrl,
+        touchAfter: 24 * 3600 // time period in seconds
+    })
 }
 app.use(session(sessionConfig))
 app.use(flash())

@@ -1,38 +1,40 @@
 <% layout("layouts/boilerplate") %>
     <div class="" id="map" style="width: 100%; height: 300px"></div>
-    <ul>
-        <% for (let campground of campgrounds) { %>
-            <div class="card mb-2">
-                <div class="row">
-                    <div class="col-md-4">
-                        <% if(campground.images.length) { %>
-                            <img class="img-fluid my-4" src="<%=campground.images[0].url%>">
-                            <% } else { %>
-                                <img class="img-fluid my-4"
-                                    src="https://res.cloudinary.com/dx4seg5ka/image/upload/v1659485215/YelpCamp/dy4bzkaigh3vmoyy4yv4.jpg">
-                                <% } %>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <div class="card-title">
-                                <h5>
-                                    <a href="/campgrounds/<%=campground._id%>" class="text-decoration-none">
-                                        <%= campground.title %>
-                                    </a>
-                                </h5>
-                                <span><small class="text-muted">
-                                        <%=campground.location%>
-                                    </small></span>
+    <div class="container mt-4">
+        <ul>
+            <% for (let campground of campgrounds) { %>
+                <div class="card mb-2">
+                    <div class="row">
+                        <div class="col-md-4 col-xl-3">
+                            <% if(campground.images.length) { %>
+                                <img class="img-fluid my-2" src="<%=campground.images[0].url%>">
+                                <% } else { %>
+                                    <img class="img-fluid my-2"
+                                        src="https://res.cloudinary.com/dx4seg5ka/image/upload/v1659485215/YelpCamp/dy4bzkaigh3vmoyy4yv4.jpg">
+                                    <% } %>
+                        </div>
+                        <div class="col-md-8 col-xl-6">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h5>
+                                        <a href="/campgrounds/<%=campground._id%>" class="text-decoration-none">
+                                            <%= campground.title %>
+                                        </a>
+                                    </h5>
+                                    <span><small class="text-muted">
+                                            <%=campground.location%>
+                                        </small></span>
+                                </div>
+                                <p class="card-text">
+                                    <%=campground.description%>
+                                </p>
                             </div>
-                            <p class="card-text">
-                                <%=campground.description%>
-                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
-            <% } %>
-    </ul>
+                <% } %>
+        </ul>
+    </div>
 
     <script>
         const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
